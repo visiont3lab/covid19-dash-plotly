@@ -12,10 +12,10 @@ Data collected from:
 
 ## TODO
 
-*[ ] Analyze italian data based on "Province", "Comuni" and "Città". Add the possibility to search a specific "Comune,Città,Provincia"
-*[ ] Create a world interactive map showing how the virus has spread in the world (timeline)
-*[ ] Develop a simulation describing how the virus spread
-*[ ] Add covid19 useful information and updates  
+* [ ] Analyze italian data based on "Province", "Comuni" and "Città". Add the possibility to search a specific "Comune,Città,Provincia"
+* [ ] Create a world interactive map showing how the virus has spread in the world (timeline)
+* [ ] Develop a simulation describing how the virus spread
+* [ ] Add covid19 useful information and updates  
 
 ## Setup
 
