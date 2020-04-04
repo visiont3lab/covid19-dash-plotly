@@ -251,6 +251,10 @@ external_stylesheets= [dbc.themes.SOLAR]
 
 # Bootstrap Theme https://www.bootstrapcdn.com/bootswatch/
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+
+server = app.server
+
+
 VALID_USERNAME_PASSWORD_PAIRS = {
     'admin': 'admin'
 }
@@ -342,7 +346,7 @@ app.layout = html.Div(children=[
 ])
 
 if __name__ == '__main__':
-    app.run_server(debug=True,threaded=True)
+    app.run_server(debug=True)
 
 
 

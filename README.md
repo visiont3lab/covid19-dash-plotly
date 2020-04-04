@@ -27,7 +27,8 @@ Dashboard using Dash Plotly Library
     heroku create covid19-dash-plotly
     heroku git:remote -a covid19-dash-plotly
     git push heroku master
-    heroku ps:scale web=1
+    heroku ps:scale web=1  # start web dyno see Procfile
+    heroku logs --tail # check logs
     ```
 
     Useful output:
@@ -46,9 +47,9 @@ Dashboard using Dash Plotly Library
 
 
 
-
 ## References
 
 * [dash deploy](https://dash.plotly.com/deployment)
 * [dash-heroku-template](https://github.com/plotly/dash-heroku-template)
 * [heroku cli](https://devcenter.heroku.com/articles/heroku-cli)
+* [heroku cli Logs](https://devcenter.heroku.com/articles/logging#view-logs)
