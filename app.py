@@ -254,7 +254,7 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 server = app.server
 
-
+'''
 VALID_USERNAME_PASSWORD_PAIRS = {
     'admin': 'admin'
 }
@@ -262,6 +262,7 @@ auth = dash_auth.BasicAuth(
     app,
     VALID_USERNAME_PASSWORD_PAIRS
 )
+'''
 
 # data morti contagiati per regione
 dmcpri = dati_morti_contagiati_per_regione_italia()

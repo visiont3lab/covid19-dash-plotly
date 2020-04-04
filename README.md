@@ -2,8 +2,8 @@
 
 Dashboard using Dash Plotly Library
 
-    * [Website](https://covid19-dash-plotly.herokuapp.com/)
-    * https://covid19-dash-plotly.herokuapp.com/
+* [Website](https://covid19-dash-plotly.herokuapp.com/)
+* https://covid19-dash-plotly.herokuapp.com/
 
 ## Setup
 
@@ -33,7 +33,7 @@ Dashboard using Dash Plotly Library
 
     Useful output:
     Creating ⬢ covid19-dash-plotly... done  
-    https://covid19-dash-plotly.herokuapp.com/ | https://git.heroku.com covid19-dash-plotly.git
+    https://covid19-dash-plotly.herokuapp.com/ | https://git.heroku.com/covid19-dash-plotly.git
 
 * Heroku Update
 
@@ -44,8 +44,17 @@ Dashboard using Dash Plotly Library
     git push heroku master
     ```
 
-
-
+* Link to Github
+    
+    Create a repository from github called "covid19-dash-plotly"
+    
+    ```
+    git remote add origin https://github.com/visiont3lab/covid19-dash-plotly.git
+    git push -u origin master
+    ```
+    
+    Use heroku website to connect your heroku app with the created github repo. It will allow to have automatic deploy on push and code diffs.
+    Enable automatic deploy
 
 ## References
 
