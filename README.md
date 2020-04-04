@@ -5,6 +5,18 @@ Dashboard using Dash Plotly Library
 * [Website](https://covid19-dash-plotly.herokuapp.com/)
 * https://covid19-dash-plotly.herokuapp.com/
 
+Data collected from:
+
+* [Dati COVID-19 Italia](https://github.com/pcm-dpc/COVID-19)
+* [Covid World Data](https://github.com/open-covid-19/data)
+
+## TODO
+
+*[ ] Analyze italian data based on "Province", "Comuni" and "Città". Add the possibility to search a specific "Comune,Città,Provincia"
+*[ ] Create a world interactive map showing how the virus has spread in the world (timeline)
+*[ ] Develop a simulation describing how the virus spread
+*[ ] Add covid19 useful information and updates  
+
 ## Setup
 
 *   Python setup
@@ -55,6 +67,9 @@ Dashboard using Dash Plotly Library
     
     Use heroku website to connect your heroku app with the created github repo. It will allow to have automatic deploy on push and code diffs.
     Enable automatic deploy
+
+## TODO
+
 
 ## References
 
