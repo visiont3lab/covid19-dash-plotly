@@ -2,6 +2,9 @@
 
 Dashboard using Dash Plotly Library
 
+    * [Website](https://covid19-dash-plotly.herokuapp.com/)
+    * https://covid19-dash-plotly.herokuapp.com/
+
 ## Setup
 
 *   Python setup
@@ -18,10 +21,11 @@ Dashboard using Dash Plotly Library
     ```
     cd covid19-dash-plotly
     heroku login -i 
-    heroku create covid19-dash-plotly
     git init
     git add .
     git commit -m "Initial app"
+    heroku create covid19-dash-plotly
+    heroku git:remote -a covid19-dash-plotly
     git push heroku master
     heroku ps:scale web=1
     ```
