@@ -34,6 +34,9 @@ Data collected from:
     git push heroku master
     heroku ps:scale web=1  # start web dyno see Procfile
     heroku logs --tail # check logs
+    heroku ps:scale web=0 # stop app
+    heroku ps -a covid19-dash-plotly # remaining hours check
+
     ```
 
     Useful output:
