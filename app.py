@@ -214,4 +214,4 @@ def update_fig_reg(checklist_value, plot_style_value, dropdown_regioni_value):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True, host="0.0.0.0", port=8800)
+    app.run_server() #debug=True, host="0.0.0.0", port=8800)
