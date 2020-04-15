@@ -64,6 +64,11 @@ Data collected from:
     Use heroku website to connect your heroku app with the created github repo. It will allow to have automatic deploy on push and code diffs.
     Enable automatic deploy
 
+## Bugs
+* [] Dropdown hover color non visibile. Non trovo il css per cambiarlo.
+* [] Pie plot con tanti valori causa diverse label che escono dal grafico. 
+
+
 ## TODO
 
 * [ ] Analyze italian data based on "Province", "Comuni" and "Città". Add the possibility to search a specific "Comune,Città,Provincia"
