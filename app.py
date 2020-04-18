@@ -8,8 +8,10 @@ import dash_html_components as html
 import dash_core_components as dcc
 import plotly.graph_objects as go
 import pandas as pd
-from my_lib import *
+from mylib import *
 import time
+
+
 
 # dati regioni: df_regioni = pd.read_csv(https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv)
 
@@ -94,7 +96,8 @@ app.layout = html.Div([
         html.Div([
                 html.Div([
                     html.H3("Analisi Nazionale"),
-                    dcc.Graph(id='fig-naz', figure=fig_naz)
+                    # Config figure options https://plotly.com/python/configuration-options/
+                    dcc.Graph(id='fig-naz', figure=fig_naz) #, config=dict(scrollZoom=False))
                 ], className="six columns pretty_container"),
                 html.Div([
                     html.H3("Variazione Nazionale Totale Positivi"),
