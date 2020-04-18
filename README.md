@@ -8,7 +8,13 @@ Dashboard using Dash Plotly Library
 Data collected from:
 
 * [Dati COVID-19 Italia](https://github.com/pcm-dpc/COVID-19)
+  * [Dati andamento nazionale csv](https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv)
+  * [Dati andamento regionale csv](https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv)
+  * [Dati andamento provinciale csv](https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv)
+  
 * [Covid World Data](https://github.com/open-covid-19/data)
+
+
 
 ## Setup
 
