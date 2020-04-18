@@ -25,7 +25,7 @@
 
 @media only screen and (max-width: 1400px) {
     .one, .two, .three, .five, .six,
-    .seven, .nine, .ten, .eleven, .twelve  {width: 98% !important;}
+    .seven, .nine, .ten, .eleven, .twelve  {width: 88% !important;} /*{width: 98% !important;}*/
     .eight {width: 60% !important;}
     .four {width: 25% !important;}
 }
