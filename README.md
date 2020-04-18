@@ -77,14 +77,14 @@ Data collected from:
 
 
 ## TODO
- *[] Aggiungere refresh dei dati giornaliero
- *[] Sviluppare dockerfile per applicazione server senza heroku
- *[]  Aggiugnere spiegazione per ogni parametro. Premessa: non sono certo di cosa si voglia intendere con "tamponi" o "casi positivi"
- *[] Nel terzo grafico rendere disponibile cliccare "nuovi tamponi" (il delta fra due istanti di tempo successivi).Così da poter mettere a paragone la relazione fra nuovi positivi e nuovi tamponi
- *[] Comunque ho letto un articolo di recente che diceva che i dati ISTAT sarebbero più affidabili. Possibilita di confronto tra dati instat e protezione civile.
- *[] Analizzare la probabilità che una persona venga contagiata.
- *[] Analizzare i dati mondiali
- *[] Svilupapre una simulazione su come il virus si diffonde e le probabilità di contagio
+ * [] Aggiungere refresh dei dati giornaliero
+ * [] Sviluppare dockerfile per applicazione server senza heroku
+ * []  Aggiugnere spiegazione per ogni parametro. Premessa: non sono certo di cosa si voglia intendere con "tamponi" o "casi positivi"
+ * [] Nel terzo grafico rendere disponibile cliccare "nuovi tamponi" (il delta fra due istanti di tempo successivi).Così da poter mettere a paragone la relazione fra nuovi positivi e nuovi tamponi
+ * [] Comunque ho letto un articolo di recente che diceva che i dati ISTAT sarebbero più affidabili. Possibilita di confronto tra dati instat e protezione civile.
+ * [] Analizzare la probabilità che una persona venga contagiata.
+ * [] Analizzare i dati mondiali
+ * [] Svilupapre una simulazione su come il virus si diffonde e le probabilità di contagio
 
 ## References
 
