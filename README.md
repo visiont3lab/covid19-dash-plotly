@@ -69,9 +69,6 @@ Data collected from:
     Enable automatic deploy
 
 ## Bugs
-
-
-
 * [ ] Dropdown hover color non visibile. Non trovo il css per cambiarlo.
 * [ ] Pie plot con tanti valori causa diverse label che escono dal grafico. 
 
@@ -90,3 +87,4 @@ Data collected from:
 * [dash-heroku-template](https://github.com/plotly/dash-heroku-template)
 * [heroku cli](https://devcenter.heroku.com/articles/heroku-cli)
 * [heroku cli Logs](https://devcenter.heroku.com/articles/logging#view-logs)
+* [Color Palette Selector Adobe online ](https://coolors.co/1c5253-388659-00ce7f-33658a-86bbd8)

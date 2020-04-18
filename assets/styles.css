@@ -15,7 +15,7 @@
   
 .pretty_container {
     border-radius: 5px;
-    background-color: #22252b;
+    background-color: #0E1428; /*#22252b;
     /*margin: 10px !important;*/
     /*margin: 10px !important;*/
     padding: 15px;
@@ -52,7 +52,7 @@ Select, .Select div, .Select input, .Select span {
 
 #main{
     position: relative;
-    background-color: rgb(61, 5, 5);
+    /*background-color: #8699B9;*/ 
 }
 
 .flex-display {
@@ -62,7 +62,7 @@ Select, .Select div, .Select input, .Select span {
 
 .mini_container {
     border-radius: 5px;
-    background-color: #22252b;
+    background-color: #0E1428;
     margin: 10px;
     padding: 15px;
     position: relative;
@@ -71,7 +71,7 @@ Select, .Select div, .Select input, .Select span {
 
 .info_container {
     border-radius: 5px;
-    background-color: #22252b;
+    background-color: #0E1428; 
     /*margin: 10px 10px 10px 10px !important; */
     padding: 15px;
     position: relative;
