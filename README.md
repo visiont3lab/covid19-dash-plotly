@@ -68,19 +68,6 @@ Data collected from:
     Use heroku website to connect your heroku app with the created github repo. It will allow to have automatic deploy on push and code diffs.
     Enable automatic deploy
 
-## Bugs
-* [ ] Dropdown hover color non visibile. Non trovo il css per cambiarlo.
-* [ ] Pie plot con tanti valori causa diverse label che escono dal grafico. 
-
-
-## TODO
-* [ ] Aggiungere grafico tasso di mortalità (deceduti rispetto al totale dei contagiati), tasso di guarigion (guariti rispetto a contagiati)
-* [ ] Creare database oppure copiarsi i dati localmente perchè ora i csv vengono presi da un altro sito e se quello smette di funzionare i dati scompaiono
-* [ ] Aggiungere alla immagine Analisi nazionale i nomero totali nella legenda e ordinarla in base a quel numero.
-* [ ] Aggiungere blocchi in alto con anche ricoverati con sintomi, terapia intensiva, totale ospedalizzati, isolamento domiciliare
-* [ ] Aiggungere informazioni relative al COvid 19 e implementare uno scraping con le ultime notizie.
-
-
 ## References
 
 * [dash deploy](https://dash.plotly.com/deployment)
