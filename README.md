@@ -71,17 +71,20 @@ Data collected from:
     Enable automatic deploy
 
 ## Bugs
-* [] Dropdown hover color non visibile. Non trovo il css per cambiarlo.
-* [] Pie plot con tanti valori causa diverse label che escono dal grafico. 
+*[] Design del telefono non robusto. Quando clicco su una figura zoom automaticatemte. Bisognerebbe aggiunbgere le touch gesture.
+*[] Dropdown hover color non visibile. Non trovo il css per cambiarlo.
+*[] Pie plot con tanti valori causa diverse label che escono dal grafico. 
 
 
 ## TODO
-
-* [ ] Analyze italian data based on "Province", "Comuni" and "Città". Add the possibility to search a specific "Comune,Città,Provincia"
-* [ ] Create a world interactive map showing how the virus has spread in the world (timeline)
-* [ ] Develop a simulation describing how the virus spread
-* [ ] Add covid19 useful information and updates  
-
+ *[] Aggiungere refresh dei dati giornaliero
+ *[] Sviluppare dockerfile per applicazione server senza heroku
+ *[]  Aggiugnere spiegazione per ogni parametro. Premessa: non sono certo di cosa si voglia intendere con "tamponi" o "casi positivi"
+ *[] Nel terzo grafico rendere disponibile cliccare "nuovi tamponi" (il delta fra due istanti di tempo successivi).Così da poter mettere a paragone la relazione fra nuovi positivi e nuovi tamponi
+ *[] Comunque ho letto un articolo di recente che diceva che i dati ISTAT sarebbero più affidabili. Possibilita di confronto tra dati instat e protezione civile.
+ *[] Analizzare la probabilità che una persona venga contagiata.
+ *[] Analizzare i dati mondiali
+ *[] Svilupapre una simulazione su come il virus si diffonde e le probabilità di contagio
 
 ## References
 
