@@ -4,9 +4,10 @@ Dashboard using Dash Plotly Library
 
 * [Website](https://covid19-dash-plotly.herokuapp.com/)
 * https://covid19-dash-plotly.herokuapp.com/
-
-Cliccare questo link per provare e modicare la dashboard 
+* Cliccare questo link per provare e modicare la dashboard 
 [![Run on Repl.it](https://repl.it/badge/github/visiont3lab/covid19-dash-plotly)](https://repl.it/github/visiont3lab/covid19-dash-plotly)
+* [plotly-dash-boilerplate](https://github.com/visiont3lab/plotly-dash-boilerplate) è un boilerplate project disegnato per iniziare a programma usando plotly e dash
+
 
 Data collected from:
 
@@ -68,6 +69,9 @@ Data collected from:
     Enable automatic deploy
 
 ## Bugs
+
+
+
 * [ ] Dropdown hover color non visibile. Non trovo il css per cambiarlo.
 * [ ] Pie plot con tanti valori causa diverse label che escono dal grafico. 
 
