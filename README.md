@@ -5,6 +5,9 @@ Dashboard using Dash Plotly Library
 * [Website](https://covid19-dash-plotly.herokuapp.com/)
 * https://covid19-dash-plotly.herokuapp.com/
 
+Cliccare questo link per provare e modicare la dashboard 
+[![Run on Repl.it](https://repl.it/badge/github/visiont3lab/covid19-dash-plotly)](https://repl.it/github/visiont3lab/covid19-dash-plotly)
+
 Data collected from:
 
 * [Dati COVID-19 Italia](https://github.com/pcm-dpc/COVID-19)
@@ -65,11 +68,13 @@ Data collected from:
     Enable automatic deploy
 
 ## Bugs
-* [] Dropdown hover color non visibile. Non trovo il css per cambiarlo.
-* [] Pie plot con tanti valori causa diverse label che escono dal grafico. 
+* [ ] Dropdown hover color non visibile. Non trovo il css per cambiarlo.
+* [ ] Pie plot con tanti valori causa diverse label che escono dal grafico. 
 
 
 ## TODO
+* [ ] Aggiungere grafico tasso di mortalità (deceduti rispetto al totale dei contagiati), tasso di guarigion (guariti rispetto a contagiati)
+* [ ] Creare database oppure copiarsi i dati localmente perchè ora i csv vengono presi da un altro sito e se quello smette di funzionare i dati scompaiono
 * [ ] Aggiungere alla immagine Analisi nazionale i nomero totali nella legenda e ordinarla in base a quel numero.
 * [ ] Aggiungere blocchi in alto con anche ricoverati con sintomi, terapia intensiva, totale ospedalizzati, isolamento domiciliare
 * [ ] Aiggungere informazioni relative al COvid 19 e implementare uno scraping con le ultime notizie.

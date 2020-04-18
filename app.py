@@ -63,7 +63,7 @@ app.layout = html.Div([
         html.Div([
                 html.Div(
                     [html.H6(id="info_text"), 
-                    html.P("Covid19 Dashboard Italia"), html.P("Autore: Manuel Rucci"), 
+                    html.P("Covid19 Dashboard Italia"), #html.P("Autore: Manuel Rucci"), 
                     html.P(html.A("Github Project Link", href="https://github.com/visiont3lab/covid19-dash-plotly")),  
                     html.P(html.A("Dati forniti dalla Protezione Civile", href="https://github.com/pcm-dpc/COVID-19")),
                     html.P("Ultimo aggiornamento: " + ultima_data)],
