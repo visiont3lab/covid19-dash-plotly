@@ -110,8 +110,9 @@ def plot_totale_casi_provincia(df, lista_input, radio_buttom_value="Mostra Solo 
             #linecolor = "red",
             zeroline=False,
             #zerolinecolor="cyan",
-            #fixedrange=True,         
+            fixedrange=True,         
         ),
+        dragmode="pan", #Type: enumerated , one of ( "zoom" | "pan" | "select" | "lasso" | "orbit" | "turntable" | False
         font=dict(
         #    family="Courier New, monospace",
         #    size=20,
@@ -250,12 +251,14 @@ def plot_regioni(df,lista_regioni_to_plot,lista_keys_to_plot=None, plot_style=No
             #linecolor = "red",
             zeroline=False,
             #zerolinecolor="cyan",
+            fixedrange=True,
         ),
         font=dict(
         #    family="Courier New, monospace",
         #    size=20,
             color="white", #"#7f7f7f", 
         ),
+        dragmode="pan", #Type: enumerated , one of ( "zoom" | "pan" | "select" | "lasso" | "orbit" | "turntable" | False
         hovermode='x',  #['x unified', 'y', 'closest', False]
         plot_bgcolor = "rgb(44,44,44)",
         paper_bgcolor="rgb(33, 33, 33)",
@@ -337,12 +340,14 @@ def plot_nazionale(df):
             #linecolor = "red",
             zeroline=False,
             #zerolinecolor="cyan",
+            fixedrange=True,
         ),
         font=dict(
         #    family="Courier New, monospace",
         #    size=20,
             color="white", #"#7f7f7f", 
         ),
+        dragmode="pan", #Type: enumerated , one of ( "zoom" | "pan" | "select" | "lasso" | "orbit" | "turntable" | False
         hovermode='x',  #['x unified', 'y', 'closest', False]
         plot_bgcolor = "rgb(44,44,44)",
         paper_bgcolor="rgb(33, 33, 33)",
@@ -418,12 +423,14 @@ def plot_variazione_nazionale(df):
             #linecolor = "red",
             zeroline=False,
             #zerolinecolor="cyan",
+            fixedrange=True,
         ),
         font=dict(
         #    family="Courier New, monospace",
         #    size=20,
             color="white", #"#7f7f7f", 
         ),
+        dragmode="pan", #Type: enumerated , one of ( "zoom" | "pan" | "select" | "lasso" | "orbit" | "turntable" | False
         hovermode='x',  #['x unified', 'y', 'closest', False]
         plot_bgcolor = "rgb(44,44,44)",
         paper_bgcolor="rgb(33, 33, 33)",
