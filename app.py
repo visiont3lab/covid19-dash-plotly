@@ -9,6 +9,7 @@ from mylib import *
 import time
 from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
 import datetime as dt
+import dash_table
 
 # Input
 regione ="Emilia-Romagna"
@@ -16,7 +17,7 @@ provincia = "Bologna"
 # number of seconds between re-calculating the data                                                                                                                           
 UPDADE_INTERVAL = 5 # 1 day
 # Aggiorniamo alle 19:00
-desired_update_time = 19 #hour
+desired_update_time = 16 #hour (heroku server 2 ore indietro)
 server_start_time = dt.datetime.now()
 delta = desired_update_time-server_start_time.hour
 if delta>0:
@@ -25,7 +26,7 @@ elif delta==0:
     period = 60
 else:
     period = (24 + delta)*60*60
-print(period)
+print("Nuovo Aggiornameto tra: " +  str(period/60.0)  + " minuti")
 
 def get_data():
     global df_nazionale, df_regioni, df_province
@@ -66,6 +67,18 @@ fig_line=fig_pie=fig_map=None
 fig_line,fig_pie = plot_totale_casi_provincia(df_province, regione)
 fig_map = plot_map(df_province)
 
+valore = list(df_nazionale.iloc[-1:,2:13].values[0])
+incremento = list(df_nazionale.iloc[-1:,2:13].values[0] - df_nazionale.iloc[-2:,2:13].values[0])
+for i in range(0,len(incremento)):
+    if incremento[i]>=0:  incremento[i] = "+"+str(incremento[i])
+    else: incremento[i] = str(incremento[i]) 
+
+table_dict = {
+    "tipo" :   [i.replace("_"," ") for i in list(df_nazionale.keys()[2:13])],
+    "numero" : [f'{valore[i]:,}' + " (" + incremento[i] +")" for i in range(0,len(valore))],
+}
+table_pd = pd.DataFrame(table_dict)
+
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
@@ -75,8 +88,7 @@ app.layout = html.Div([
     html.Div([
         html.Div([
                 html.Div(
-                    [html.H6(id="info_text"), 
-                    html.P("Covid19 Dashboard Italia"), #html.P("Autore: Manuel Rucci"), 
+                    [html.P("Covid19 Dashboard Italia"), #html.P("Autore: Manuel Rucci"), 
                     html.P(html.A("Github Project Link", href="https://github.com/visiont3lab/covid19-dash-plotly")),  
                     html.P(html.A("Dati forniti dalla Protezione Civile", href="https://github.com/pcm-dpc/COVID-19")),
                     html.P("Ultimo aggiornamento: " + ultima_data)],
@@ -84,27 +96,70 @@ app.layout = html.Div([
                     className="four columns info_container "
                 ),
                 html.Div([
-                    html.Div(
-                        [html.H6(id="totale-positivi"), html.H6("Totale Positivi"), html.H6(totale_positivi, style={"text-align": "center"})],
-                        className="mini_container"
-                    ),
-                    html.Div(
-                        [html.H6(id="dimessi-guariti"), html.H6("Dimessi Guariti"), html.H6(dimessi_guariti, style={"text-align": "center"})],
-                        className="mini_container"
-                    ),
-                    html.Div(
-                        [html.H6(id="deceduti"), html.H6("Deceduti"),html.H6(deceduti, style={"text-align": "center"})],
-                        className="mini_container"
-                    ),
-                    html.Div(
-                        [html.H6(id="nuovi-positivi"), html.H6("Nuovi Positivi"),html.H6(nuovi_positivi , style={"text-align": "center"})],
-                        className="mini_container"
-                    ),
-                    html.Div(
-                        [html.H6(id="totale-casi"), html.H6("Totale Casi"),html.H6(totale_casi, style={"text-align": "center"})],
-                        className="mini_container"
-                    )
-                ], id="info-container", className="eight columns flex-display"),
+                    html.Div([   
+                        dash_table.DataTable(
+                            id='table_one',
+                            columns=[{"name": "", "id": "tipo"},{"name": "", "id": "numero"}], #[{"name": i.replace("_"," "), "id": i} for i in list(df_nazionale.keys()[2:7])],
+                            data=table_pd.loc[0:4].to_dict("records"),
+                            style_as_list_view=False,
+                            style_header={"display" : "none"},
+                            style_cell={
+                                'textAlign': 'center',
+                                'backgroundColor': 'rgb(44, 44, 44)',
+                                'color': 'white',
+                            },  
+                            style_data_conditional=[{
+                                "if": {"row_index": 0},
+                                "backgroundColor": "#3E1D2A",
+                            },{ "if": {"row_index": 1},
+                                "backgroundColor": "#3E1D2A",
+                            }]
+                        ),
+                        ], id='table-one-layout', className="four columns info_container "), #,style={ 'padding' : '0px 15px'}),
+                    html.Div([   
+                        dash_table.DataTable(
+                            id='table-two',
+                            columns=[{"name": "", "id": "tipo"},{"name": "", "id": "numero"}], #[{"name": i.replace("_"," "), "id": i} for i in list(df_nazionale.keys()[2:7])],
+                            data=table_pd.loc[6:].to_dict("records"),
+                            style_as_list_view=False,
+                            style_header={"display" : "none"},
+                            style_cell={
+                                'textAlign': 'center',
+                                'backgroundColor': 'rgb(44, 44, 44)',
+                                'color': 'white',
+                            },  
+                            style_data_conditional=[{
+                                "if": {"row_index": 2 },
+                                "backgroundColor": "#3E1D2A",
+                            }]
+                        ),
+                        ], id='table-two-layout', className="four columns info_container "),
+                    ],
+                ),
+               
+                # html.Div([
+                #     html.Div(
+                #         [html.H6(id="totale-positivi"), html.H6("Totale Positivi"), html.H6(totale_positivi, style={"text-align": "center"})],
+                #         className="mini_container"
+                #     ),
+                #     html.Div(
+                #         [html.H6(id="dimessi-guariti"), html.H6("Dimessi Guariti"), html.H6(dimessi_guariti, style={"text-align": "center"})],
+                #         className="mini_container"
+                #     ),
+                #     html.Div(
+                #         [html.H6(id="deceduti"), html.H6("Deceduti"),html.H6(deceduti, style={"text-align": "center"})],
+                #         className="mini_container"
+                #     ),
+                #     html.Div(
+                #         [html.H6(id="nuovi-positivi"), html.H6("Nuovi Positivi"),html.H6(nuovi_positivi , style={"text-align": "center"})],
+                #         className="mini_container"
+                #     ),
+                #     html.Div(
+                #         [html.H6(id="totale-casi"), html.H6("Totale Casi"),html.H6(totale_casi, style={"text-align": "center"})],
+                #         className="mini_container"
+                #     )
+                # ], id="info-container", className="eight columns flex-display"),
+          
             ], className="row"),
         html.Div([
                 html.Div([
@@ -211,13 +266,11 @@ def update_map(n_intervals):
     return fig_map,num
 '''
 
-
 @app.callback(dash.dependencies.Output('fig-map', 'figure'),
     [dash.dependencies.Input('slider-map', 'value')])
 def update_map(slider_value):
     fig_map = plot_map(df_province, lista_date[slider_value])
     return fig_map
-
 
 @app.callback(dash.dependencies.Output('fig-reg', 'figure'),
     [dash.dependencies.Input('checklist', 'value'),
@@ -228,7 +281,6 @@ def update_fig_reg(checklist_value, plot_style_value, dropdown_regioni_value):
     fig_reg = plot_regioni(df_regioni, dropdown_regioni_value, checklist_value,plot_style_value)
     return fig_reg
 
-
 def daily_update():
     # Daily update https://community.plotly.com/t/solved-updating-server-side-app-data-on-a-schedule/6612/2
     executor = ThreadPoolExecutor(max_workers=1)
@@ -236,4 +288,4 @@ def daily_update():
 
 if __name__ == '__main__':
     daily_update()
-    app.run_server(host="0.0.0.0") #debug=True, host="0.0.0.0", port=8800)
+    app.run_server(host="0.0.0.0") #,debug=True) #, host="0.0.0.0", port=8800)

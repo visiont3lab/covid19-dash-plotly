@@ -12,6 +12,7 @@
 .columns {
     margin: 1% !important;
 }
+
   
 .pretty_container {
     border-radius: 5px;
@@ -23,11 +24,11 @@
     /*box-shadow: 2px 2px 2px lightgray;*/
 }
 
+.four {width: 31.33% !important;}
+
 @media only screen and (max-width: 1400px) {
-    .one, .two, .three, .five, .six,
-    .seven, .nine, .ten, .eleven, .twelve  {width: 98% !important;}
-    .eight {width: 60% !important;}
-    .four {width: 25% !important;}
+    .one, .two, .three .five, .six,
+    .seven, .nine, .ten, .eleven, .twelve , .eigth {width: 98% !important;}
 }
   
 #radio-buttom-province, #radio-buttom-plot-style{
