@@ -1,3 +1,5 @@
+# coding=utf-8 
+
 '''
 Interactive User Interface -Data Visualization 
 GUIs with Dash and Python p.3

@@ -1,5 +1,5 @@
-# Funzione fa il plot
-# Funzione che mi calcola la tabella data, totale casi
+# coding=utf-8 
+
 import plotly.graph_objects as go
 import pandas as pd
 import plotly.express as px
@@ -689,7 +689,7 @@ def plot_mapp(df):
     fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
     return fig
 
-def es3(df,regione):
+
     #https://plotly.com/python/pie-charts/#pie-chart-with-plotly-express
     # https://plotly.com/python-api-reference/generated/plotly.express.pie.html
     ultima_data_aggiornamento = list(df.tail(1)["data"])[0]

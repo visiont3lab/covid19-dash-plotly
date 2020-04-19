@@ -1,7 +1,4 @@
-# https://stackoverflow.com/questions/53622518/launch-a-dash-app-in-a-google-colab-notebook
-### Save file with Dash app on the Google Colab machine
-
-# Deployment https://dash.plotly.com/deployment
+# coding=utf-8 
 
 import dash
 import dash_html_components as html
@@ -10,48 +7,64 @@ import plotly.graph_objects as go
 import pandas as pd
 from mylib import *
 import time
+from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
+import datetime as dt
 
-
-
-# dati regioni: df_regioni = pd.read_csv(https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv)
-
-# https://plotly.com/~yusuf.sultan/119/pie-charts-5-labels-text-hoverinf/#/
-# lista contenente nomi di tutte le regioni e province
-
+# Input
 regione ="Emilia-Romagna"
 provincia = "Bologna"
+# number of seconds between re-calculating the data                                                                                                                           
+UPDADE_INTERVAL = 5 # 1 day
+# Aggiorniamo alle 19:00
+desired_update_time = 19 #hour
+server_start_time = dt.datetime.now()
+delta = desired_update_time-server_start_time.hour
+if delta>0:
+    period = delta*60*60
+elif delta==0:
+    period = 60
+else:
+    period = (24 + delta)*60*60
+print(period)
 
-# Dati per provincia
-df_nazionale = pd.read_csv("https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv")
-df_nazionale["data"] = pd.to_datetime(df_nazionale["data"]).dt.date
-fig_naz = plot_nazionale(df_nazionale)
-fig_var_naz = plot_variazione_nazionale(df_nazionale)
-totale_positivi,dimessi_guariti,deceduti,nuovi_positivi,totale_casi = get_info_data(df_nazionale)
+def get_data():
+    global df_nazionale, df_regioni, df_province
 
+    df_nazionale = pd.read_csv("https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv")
+    df_nazionale["data"] = pd.to_datetime(df_nazionale["data"]).dt.date
 
-# Dati per provincia
-df_regioni = pd.read_csv("https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv")
-df_regioni["data"] = pd.to_datetime(df_regioni["data"]).dt.date
-fig_reg = plot_regioni(df_regioni, regione)
+    df_regioni = pd.read_csv("https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv")
+    df_regioni["data"] = pd.to_datetime(df_regioni["data"]).dt.date
 
-df = pd.read_csv("https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv")
-df["data"] = pd.to_datetime(df["data"]).dt.date
-lista_date = (df["data"].unique())
+    df_province = pd.read_csv("https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv")
+    df_province["data"] = pd.to_datetime(df_province["data"]).dt.date  
+
+def get_data_every(period=UPDADE_INTERVAL):
+    #Updates the global variables with new data every day
+    #delta = dt.datetime.now()-server_start_time
+
+    while True:
+        get_data()
+        #print("data updated")
+        time.sleep(period)
+
+# get initial data                                                                                                                                                            
+get_data()
+
+lista_date = (df_province["data"].unique())
 ultima_data = lista_date[-1].strftime("%A %d %b  %Y")
 dict_date={}
 for c in range(0,len(lista_date),3):
     # https://www.guru99.com/date-time-and-datetime-classes-in-python.html
     dict_date[c] = {"label": lista_date[c].strftime("%b %d")} 
-
-nomi_regioni_province = ["Tutte"] +  get_nomi_regioni(df) + get_nomi_province(df)
-
-
-#fig1 = es1(df,provincia,regione)
+fig_reg = plot_regioni(df_regioni, regione)
+fig_naz = plot_nazionale(df_nazionale)
+fig_var_naz = plot_variazione_nazionale(df_nazionale)
+totale_positivi,dimessi_guariti,deceduti,nuovi_positivi,totale_casi = get_info_data(df_nazionale)
+nomi_regioni_province = ["Tutte"] +  get_nomi_regioni(df_province) + get_nomi_province(df_province)
 fig_line=fig_pie=fig_map=None 
-fig_line,fig_pie = plot_totale_casi_provincia(df, regione)
-fig_map = plot_map(df)
-#fig2 = es2(df,regione)
-#fig3 = es3(df,regione)
+fig_line,fig_pie = plot_totale_casi_provincia(df_province, regione)
+fig_map = plot_map(df_province)
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -109,7 +122,7 @@ app.layout = html.Div([
                     html.H3("Analisi Regionale"),
                     dcc.Dropdown(
                         id="dropdown-regioni",
-                        options=[{'label':nome, 'value':nome} for nome in get_nomi_regioni(df)],
+                        options=[{'label':nome, 'value':nome} for nome in get_nomi_regioni(df_province)],
                         value=regione,
                         searchable=True,
                         multi=True
@@ -182,7 +195,7 @@ app.layout = html.Div([
     [dash.dependencies.Output('fig-line', 'figure'),dash.dependencies.Output('fig-pie', 'figure')],
     [dash.dependencies.Input('dropdown-province', 'value'),dash.dependencies.Input('radio-buttom-province', 'value')])
 def update_figs(lista_province, radio_buttom_value):
-    fig_line, fig_pie = plot_totale_casi_provincia(df, lista_province,radio_buttom_value)
+    fig_line, fig_pie = plot_totale_casi_provincia(df_province, lista_province,radio_buttom_value)
     return fig_line, fig_pie
 
 '''
@@ -202,7 +215,7 @@ def update_map(n_intervals):
 @app.callback(dash.dependencies.Output('fig-map', 'figure'),
     [dash.dependencies.Input('slider-map', 'value')])
 def update_map(slider_value):
-    fig_map = plot_map(df, lista_date[slider_value])
+    fig_map = plot_map(df_province, lista_date[slider_value])
     return fig_map
 
 
@@ -216,5 +229,11 @@ def update_fig_reg(checklist_value, plot_style_value, dropdown_regioni_value):
     return fig_reg
 
 
+def daily_update():
+    # Daily update https://community.plotly.com/t/solved-updating-server-side-app-data-on-a-schedule/6612/2
+    executor = ThreadPoolExecutor(max_workers=1)
+    executor.submit(get_data_every)
+
 if __name__ == '__main__':
+    daily_update()
     app.run_server(host="0.0.0.0") #debug=True, host="0.0.0.0", port=8800)
