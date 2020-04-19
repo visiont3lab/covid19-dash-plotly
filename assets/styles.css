@@ -24,10 +24,11 @@
     /*box-shadow: 2px 2px 2px lightgray;*/
 }
 
-.four {width: 31.33% !important;}
+.three_modified { width: 27.33% }
+.four {width: 33.33% !important;}
 
 @media only screen and (max-width: 1400px) {
-    .one, .two, .three .five, .six,
+    .one, .three .five, .six,
     .seven, .nine, .ten, .eleven, .twelve , .eigth {width: 98% !important;}
 }
   

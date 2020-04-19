@@ -93,7 +93,7 @@ app.layout = html.Div([
                     html.P(html.A("Dati forniti dalla Protezione Civile", href="https://github.com/pcm-dpc/COVID-19")),
                     html.P("Ultimo aggiornamento: " + ultima_data)],
                     id="info",
-                    className="four columns info_container "
+                    className="three_modified columns info_container "
                 ),
                 html.Div([
                     html.Div([   
