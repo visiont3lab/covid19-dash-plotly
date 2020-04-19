@@ -17,6 +17,8 @@ Data collected from:
 ## Setup
 
 *   Python setup
+
+    [Reference Dash Deploy](https://dash.plotly.com/deployment)
     
     ```
     cd covid19-dash-plotly
@@ -70,7 +72,6 @@ Data collected from:
 
 ## References
 
-* [dash deploy](https://dash.plotly.com/deployment)
 * [dash-heroku-template](https://github.com/plotly/dash-heroku-template)
 * [heroku cli](https://devcenter.heroku.com/articles/heroku-cli)
 * [heroku cli Logs](https://devcenter.heroku.com/articles/logging#view-logs)
