@@ -38,6 +38,15 @@
     background-color: rgb(33, 33, 33);/* #22252b; */
 }
 
+/* Overriding React Select background before selecting item */
+div .Select.is-focused > .Select-control {
+    background: rgb(33, 33, 33);
+}
+/* Overriding React Select background after selecting item */
+div .Select.is-focused:not(.is-open) > .Select-control {
+    background: rgb(33, 33, 33);
+}
+
 Select, .Select div, .Select input, .Select span {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
