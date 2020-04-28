@@ -2,7 +2,7 @@
 
 Dashboard using Dash Plotly Library
 
-* [Website](https://covid19-dash-plotly.herokuapp.com/)
+* [Website Status Stop](https://covid19-dash-plotly.herokuapp.com/)
 * https://covid19-dash-plotly.herokuapp.com/
 * Cliccare questo link per provare e modicare la dashboard 
 [![Run on Repl.it](https://repl.it/badge/github/visiont3lab/covid19-dash-plotly)](https://repl.it/github/visiont3lab/covid19-dash-plotly)
